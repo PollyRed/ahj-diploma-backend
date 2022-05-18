@@ -46,54 +46,41 @@ const port = process.env.PORT || 7070;
 const server = http.createServer(app.callback()).listen(port);
 const wsServer = new WS.Server({ server });
 
-const posts = [];
+const posts = [
+  { 
+    dateString: '01.01.1970 00:00', 
+    message: 'This is test message #1', 
+    id: v4(), 
+  },
+];
 
 wsServer.on('connection', (ws) => {
   const errCallback = (err) => {
 	  if (err) {
-		  // bla
+		  console.log(err);
 	  }
   }
 
   ws.on('message', (msg) => {
     const request = JSON.parse(msg);
-	
-	console.log('msg');
-	ws.send('welcome', errCallback);
-    /*if (request.event === 'connected') {
-      users.push(ws);
-      const lastIndex = posts.findIndex((elem) => elem.pin === true);
-      let pinId = null;
-      if (lastIndex !== -1) {
-        pinId = posts[lastIndex].id;
-      }
-      const chaosEvent = JSON.stringify({
-        event: 'connected',
-        message: {
-          posts: posts.slice(posts.length - 10, posts.length),
-          pinId,
-        },
-      });
-      ws.send(chaosEvent);
-    }*/
 
     if (request.event === 'addPost') {
-      const post = {
-        date: request.dateString,
-        text: request.message,
+      const newPost = {
+        dateString: request.post.dateString,
+        message: request.post.message,
         id: v4(),
       };
 
-      posts.push(post);
+      posts.push(newPost);
     }
 	
-	if (request.event === 'getAllPosts') {
-      const chaosEvent = JSON.stringify({
+	  if (request.event === 'getAllPosts') {
+      const response = JSON.stringify({
         event: 'getAllPosts',
         allPosts: posts,
       });
 	  
-      ws.send(chaosEvent);
+      ws.send(response);
     }
   });
 });
