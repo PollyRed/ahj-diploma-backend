@@ -1,0 +1,37 @@
+{
+  "name": "ahj22-diploma-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "forever server.js",
+    "watch": "forever -w server.js"
+  },
+  "engines": {
+    "node": "11.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PollyRed/ahj22-diploma-backend.git"
+  },
+  "keywords": [
+    "ahj"
+  ],
+  "author": "PollyRed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PollyRed/ahj22-diploma-backend/issues"
+  },
+  "homepage": "https://github.com/PollyRed/ahj22-diploma-backend#readme",
+  "dependencies": {
+    "@koa/cors": "^3.3.0",
+    "forever": "^4.0.3",
+    "http-event-stream": "^0.2.0",
+    "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
+    "koa-router": "^10.1.1",
+    "uuid": "^8.3.2",
+    "ws": "^8.6.0"
+  }
+}
