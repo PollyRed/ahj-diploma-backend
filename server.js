@@ -74,6 +74,18 @@ wsServer.on('connection', (ws) => {
       posts.push(newPost);
     }
 	
+	if (request.event === 'addFilePost') {
+      const newPost = {
+        dateString: request.post.dateString,
+        file: request.post.file,
+		type: request.post.fileType,
+		name: request.post.fileName
+        id: v4(),
+      };
+
+      posts.push(newPost);
+    }
+	
 	  if (request.event === 'getAllPosts') {
       const response = JSON.stringify({
         event: 'getAllPosts',
