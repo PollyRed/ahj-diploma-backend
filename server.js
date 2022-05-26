@@ -78,8 +78,8 @@ wsServer.on('connection', (ws) => {
       const newPost = {
         dateString: request.post.dateString,
         file: request.post.file,
-		    type: request.post.fileType,
-		    name: request.post.fileName,
+		    type: request.post.type,
+		    name: request.post.name,
         id: v4(),
       };
 
