@@ -69,6 +69,7 @@ wsServer.on('connection', (ws) => {
       const newPost = {
         dateString: request.post.dateString,
         message: request.post.message,
+		type: request.post.type,
         id: v4(),
       };
 
