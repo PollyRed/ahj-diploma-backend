@@ -49,7 +49,8 @@ const wsServer = new WS.Server({ server });
 const posts = [
   { 
     dateString: '01.01.1970 00:00', 
-    message: 'This is test message #1', 
+    message: 'This is test message #1',
+	type: 'text',
     id: v4(), 
   },
 ];
